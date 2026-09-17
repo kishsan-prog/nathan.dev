@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathan's Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f0f0f;
+            --card: #181818;
+            --card-hover: #222222;
+            --text: #f1f1f1;
+            --muted: #aaaaaa;
+            --red: #ff0033;
+            --border: #303030;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            color: black;
+	    cursor: url('point.png'), auto;
+        }
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+        /* NAVBAR */
+        .navbar {
+            height: 64px;
+            background: #0f0f0f;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 27px;
+            background-color: #FFDE21;
+            border-radius: 7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 15px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px 60px;
+            display: flex;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .profile {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background-color: #d3d3d3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 65px;
+            font-weight: bold;
+            
+            flex-shrink: 0;
+	    color: black;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: #FFD901;
+        }
+
+        .hero-text .subtitle {
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+	.search{
+	    background-color: black;
+	    border: none;
+	    width:  
+	}
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .button {
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .primary {
+            background: #000072;
+            color: white;
+        }
+
+        .secondary {
+            background: #272727;
+            color: white;
+        }
+
+	.tirtiary {
+	    background-color: red;
+	    color: white;
+	}
+
+	.toggle {
+	    background-color: black;
+	    border-radius: 50%;
+	    border: none;
+	}
+
+        /* MAIN */
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px 80px;
+        }
+
+        .section-title {
+            font-size: 23px;
+            margin: 35px 0 20px;
+        }
+
+        /* INTEREST CARDS */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .video-card {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+	    background-color: black;
+        }
+
+        .thumbnail {
+            height: 190px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .thumbnail::after {
+            content: "▶";
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #000047;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            padding-left: 3px;
+            transition: 0.2s;
+        }
+
+        .video-card:hover .thumbnail::after {
+            transform: scale(1.12);
+            background-image: #000080;
+        }
+
+        .thumbnail-1 {
+            background-image: url('program.jpg');
+        }
+
+        .thumbnail-2 {
+            background-image: url('web.jpeg');
+        }
+
+        .thumbnail-3 {
+            background-image: url('hc.jpeg');
+        }
+
+        .thumbnail-4 {
+            background-image: url('prog.jpeg');
+        }
+
+        .thumbnail-5 {
+            background-image: url('tech.jpeg');
+        }
+
+        .thumbnail-6 {
+            background-image: url('code.jpeg');
+        }
+
+        .card-info {
+            display: flex;
+            gap: 12px;
+            padding-top: 13px;
+        }
+
+        .channel-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #d3d3d3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
+	    color: black;
+        }
+
+        .card-info h3 {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .card-info p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .about h2 {
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            color: #c8c8c8;
+            line-height: 1.7;
+            max-width: 850px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: #272727;
+            padding: 9px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #ddd;
+        }
+
+	.skilly {
+            background: #FFDF00 ;
+            padding: 9px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: black;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 200;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 650px;
+            background: #181818;
+            border-radius: 12px;
+            border: 1px solid #333;
+            padding: 30px;
+            position: relative;
+            animation: popup 0.2s ease;
+        }
+
+        @keyframes popup {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 12px;
+            background-color: #000080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .modal-content p {
+            color: #c8c8c8;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 55px;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail {
+                height: 210px;
+            }
+
+            .profile {
+                width: 140px;
+                height: 140px;
+                font-size: 50px;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">▶</div>
+            <span>Nathan.dev</span>
+        </div>
+
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#main">Main</a>
+            <a href="#aboutme">About Me</a>
+
+	<input type="text" class="search" placeholder="Search..">
+	
+	    <button class="toggle" onclick="myFunction()">🌗</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="profile">N</div>
+
+        <div class="hero-text">
+            <h1>Hi, I'm <span>Nathan</span>.</h1>
+
+            <p class="subtitle">
+                I'm a Class 9 student from India, I like programming in my free time.
+                Building websites, and exploring technology is my forte	.
+            </p>
+
+            <div class="buttons">
+                <a href="#interests" class="button primary">
+                    Explore My Interests
+                </a>
+
+                <a href="#about" class="button secondary">
+                    About Me
+                </a>
+		<a href="#subscribed" class="button tirtiary">
+                    Subscribe
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <h2 class="section-title" id="interests">
+            My Interests
+        </h2>
+
+        <div class="video-grid">
+
+            <!-- CARD 1 -->
+            <div class="video-card" onclick="openModal('programming')">
+
+                <div class="thumbnail thumbnail-1"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>Why I Love Programming</h3>
+                        <p>Nathan • Programming</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="video-card" onclick="openModal('web')">
+
+                <div class="thumbnail thumbnail-2"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>Building Websites From Scratch</h3>
+                        <p>Nathan • Web Development</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="video-card" onclick="openModal('html')">
+
+                <div class="thumbnail thumbnail-3"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>HTML & CSS Experiments</h3>
+                        <p>Nathan • Coding</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="video-card" onclick="openModal('projects')">
+
+                <div class="thumbnail thumbnail-4"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>My Coding Projects</h3>
+                        <p>Nathan • Projects</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+            <div class="video-card" onclick="openModal('learning')">
+
+                <div class="thumbnail thumbnail-5"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>Learning New Technologies</h3>
+                        <p>Nathan • Technology</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+            <div class="video-card" onclick="openModal('future')">
+
+                <div class="thumbnail thumbnail-6"></div>
+
+                <div class="card-info">
+                    <div class="channel-icon">N</div>
+
+                    <div>
+                        <h3>What I Want To Build</h3>
+                        <p>Nathan • Future Goals</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ABOUT -->
+        <section class="about" id="about">
+
+            <h2>About Me</h2>
+
+            <p>
+                Im Nathan, A class 9 student from India. I love creating small coding projects
+		for fun. I want to develop more projects like this one in the future! I want to 
+	        learn other languages such as python and java.
+            </p>
+
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Web Design</span>
+                <span class="skill">Programming</span>
+                <span class="skill">Problem Solving</span>
+	   	<span class="skilly">Future: Learn Java</span>
+		<span class="skilly">Future: Learn Python</span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <marquee>© 2026 Nathan • Built with HTML, CSS & JavaScript</marquee>
+    </footer>
+
+
+    <!-- MODALS -->
+
+    <div class="modal" id="programming">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('programming')">
+                &times;
+            </button>
+
+            <div class="modal-icon">💻</div>
+
+            <h2>Programming</h2>
+
+            <p>
+                Programming is one of my favourite things to do. I enjoy
+                solving problems, experimenting with code, and learning how
+                different programming concepts work.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="modal" id="web">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('web')">
+                &times;
+            </button>
+
+            <div class="modal-icon">🌐</div>
+
+            <h2>Web Development</h2>
+
+            <p>
+                I enjoy creating websites and experimenting with layouts,
+                colours, animations, and user interfaces. My goal is to
+                make websites that look great and are easy to use.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="modal" id="html">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('html')">
+                &times;
+            </button>
+
+            <div class="modal-icon">🎨</div>
+
+            <h2>HTML & CSS</h2>
+
+            <p>
+                HTML and CSS are some of the technologies I use to build
+                websites. I like experimenting with modern designs and
+                turning simple ideas into polished interfaces.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="modal" id="projects">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('projects')">
+                &times;
+            </button>
+
+            <div class="modal-icon">🚀</div>
+
+            <h2>My Projects</h2>
+
+            <p>
+                I like creating projects to practise what I learn. Every
+                project gives me an opportunity to experiment, make mistakes,
+                and improve my programming skills.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="modal" id="learning">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('learning')">
+                &times;
+            </button>
+
+            <div class="modal-icon">⚡</div>
+
+            <h2>Learning Technology</h2>
+
+            <p>
+                Technology changes quickly, so I enjoy learning new tools,
+                programming languages, frameworks, and ideas. I believe
+                that staying curious is one of the best ways to improve.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="modal" id="future">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('future')">
+                &times;
+            </button>
+
+            <div class="modal-icon">🔮</div>
+
+            <h2>Future Goals</h2>
+
+            <p>
+                I want to continue improving my programming and web
+                development skills and eventually build bigger and more
+                useful applications that people can actually use.
+            </p>
+        </div>
+    </div>
+
+
+    <script>
+
+	function myFunction() {
+ 	     var element = document.body;
+   	     element.classList.toggle("dark-mode");
+	}
+
+        function openModal(id) {
+            document.getElementById(id).classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        // Close when clicking outside the popup
+        document.querySelectorAll(".modal").forEach(modal => {
+
+            modal.addEventListener("click", function(event) {
+
+                if (event.target === modal) {
+                    modal.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                }
+
+            });
+
+        });
+
+        // Close popup with Escape key
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                document.querySelectorAll(".modal").forEach(modal => {
+                    modal.classList.remove("active");
+                });
+
+                document.body.style.overflow = "auto";
+            }
+
+        });
+    </script>
+
+</body>
+</html>
